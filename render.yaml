@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: colegio
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn colegio.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://colegio_db_3rfk_user:rOmlXRggP4Qw8lKrTqcC5GYm5Grf46dK@dpg-d3nrlp3e5dus73eis2k0-a/colegio_db_3rfk
+      - key: SECRET_KEY
+        value: django-insecure-x!%j**_@77m5n-&v8dg1(c@r(gyui5885=*%^goh7yv%hdwmhy
+      - key: DEBUG
+        value: False
