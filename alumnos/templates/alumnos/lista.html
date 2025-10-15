@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Listado de Alumnos</h2>
+<a href="{% url 'crear_alumno' %}">Nuevo Alumno</a>
+<table>
+    <tr><th>Nombre</th><th>Curso</th><th>Email</th><th>Foto</th><th>Acciones</th></tr>
+    {% for a in alumnos %}
+    <tr>
+        <td>{{ a.nombre }} {{ a.apellido }}</td>
+        <td>{{ a.curso.nombre }}</td>
+        <td>{{ a.email }}</td>
+        <td><img src="{{ a.foto.url }}" width="80"></td>
+        <td>
+            <a href="{% url 'editar_alumno' a.id %}">Editar</a> |
+            <a href="{% url 'eliminar_alumno' a.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
